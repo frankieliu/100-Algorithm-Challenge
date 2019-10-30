@@ -1,5 +1,14 @@
-function characterParity(symbol: string): string {
-   
+const characterParity = (symbol: string): string => {
+	const number = parseInt(symbol);
+	if (isNaN(number)) {
+		return "not a digit";
+	}
+
+	if (number % 2 === 0) {
+		return "even";
+	}
+
+	return "odd";
 }
 
 console.log(characterParity('5'))
