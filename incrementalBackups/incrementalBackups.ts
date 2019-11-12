@@ -1,5 +1,13 @@
-function incrementalBackups(lastBackupTime: number, changes: number[][]): number[] {
+const incrementalBackups = (lastBackupTime: number, changes: number[][]): number[] => {
+    const filesToBackup = [];
 
+    changes.forEach(change => {
+        if (!filesToBackup.includes(change[1]) && change[0] > lastBackupTime) {
+            filesToBackup.push(change[1]);
+        }
+    });
+
+    return filesToBackup.sort();
 }
 
 console.log(incrementalBackups(461620205, [[461620203, 1], 

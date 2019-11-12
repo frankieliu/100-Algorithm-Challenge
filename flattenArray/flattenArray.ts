@@ -1,5 +1,10 @@
-function flattenArray(arr: any[]): any[] {
+const flattenArray = (arr: any[]): any[] => {
+	let returnArray = [].concat.apply([], arr);
+	while (returnArray.some(item => Array.isArray(item))) {
+		returnArray = [].concat.apply([], returnArray);
+	}
 
+	return returnArray;
 }
 
 console.log(flattenArray([[["a"]], [["b"]]]));
